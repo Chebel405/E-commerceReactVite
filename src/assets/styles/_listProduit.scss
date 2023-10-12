@@ -1,0 +1,12 @@
+.ligne-produits {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .produit {
+    width: calc(33.33% - 10px); /* Largeur de 33.33% avec un espacement de 10px entre les éléments */
+    margin: 5px; /* Espacement entre les éléments */
+    border: 1px solid #ccc; /* Bordure pour les éléments */
+    padding: 10px;
+  }
+  
