@@ -1,6 +1,7 @@
 import React from "react";
 import { Produits } from "../../Data/Produits"; // Utilisation de la première lettre en majuscule
-import styles from './../../assets/styles/_listProduit.scss';
+import styles from './../../assets/styles/listProduit.css';
+
 
 const ListProduit = () => {
     const produitsParLigne = 3; // Nombre de produits par ligne
@@ -12,6 +13,7 @@ const ListProduit = () => {
                 {Produits.map((produit) => (
                     <div key={produit.id} className="produit">
                         <h2>{produit.nom}</h2>
+                        {/* <p>{produit.image}</p> */}
                         <p>Prix : {produit.prix} Euros</p>
                         <p>Type : {produit.type}</p>
                     </div>
