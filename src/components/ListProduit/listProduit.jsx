@@ -1,11 +1,10 @@
 import React from "react";
-import { Produits } from "../../Data/Produits"; // Utilisation de la première lettre en majuscule
+import { Link } from "react-router-dom";
+import { Produits } from "../../Data/Produits";
 import styles from './../../assets/styles/listProduit.css';
-
 
 const ListProduit = () => {
     const produitsParLigne = 3; // Nombre de produits par ligne
-
     return (
         <div>
             <h1>Liste des Produits</h1>
@@ -13,9 +12,9 @@ const ListProduit = () => {
                 {Produits.map((produit) => (
                     <div key={produit.id} className="produit">
                         <h2>{produit.nom}</h2>
-                        {/* <p>{produit.image}</p> */}
                         <p>Prix : {produit.prix} Euros</p>
                         <p>Type : {produit.type}</p>
+                        <Link to={`/detail/${produit.id}`}>Voir les détails</Link>
                     </div>
                 ))}
             </div>
@@ -24,3 +23,5 @@ const ListProduit = () => {
 };
 
 export default ListProduit;
+
+
