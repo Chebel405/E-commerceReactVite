@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Produits = [
+export const produits = [
     {
         id: 1,
         nom: "Pomme",

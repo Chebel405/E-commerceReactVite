@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Produits } from "../../Data/Produits";
+import { produits } from "../../Data/Produits";
 import styles from './../../assets/styles/listProduit.css';
 
 const ListProduit = () => {
@@ -9,7 +9,7 @@ const ListProduit = () => {
         <div>
             <h1>Liste des Produits</h1>
             <div className="ligne-produits">
-                {Produits.map((produit) => (
+                {produits.map((produit) => (
                     <div key={produit.id} className="produit">
                         <h2>{produit.nom}</h2>
                         <p>Prix : {produit.prix} Euros</p>
@@ -23,5 +23,3 @@ const ListProduit = () => {
 };
 
 export default ListProduit;
-
-
