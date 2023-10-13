@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Affiche les éléments en colonne */
+    text-align: center; /* Centre le texte horizontalement */
+  }
+  
+  .container h2 {
+    font-size: 24px; /* Personnalisez la taille de la police pour le titre */
+  }
+  
+  .container p {
+    margin: 10px 0; /* Ajoute de la marge autour des paragraphes */
+    font-size: 16px; /* Personnalisez la taille de la police pour les paragraphes */
+  }
+  
