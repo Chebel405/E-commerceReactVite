@@ -42,7 +42,7 @@
 }
 
  */
-body{
+/* body{
   justify-content: flex-start;
   flex-direction: column;
 }
@@ -50,5 +50,5 @@ body{
 .container{
   display: flex;
   align-items: stretch; 
-}
+} */
 

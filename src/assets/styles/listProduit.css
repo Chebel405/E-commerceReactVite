@@ -10,4 +10,8 @@
     border: 1px solid #ccc; /* Bordure pour les éléments */
     padding: 10px;
   }
-  
+  /* Dans votre fichier CSS */
+.image-produit {
+  width: 100px; /* Largeur souhaitée en pixels */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+}

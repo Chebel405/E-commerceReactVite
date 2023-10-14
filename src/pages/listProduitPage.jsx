@@ -5,7 +5,7 @@ const listProduitPage = ({ produit }) => {
     return (
         <div>
             <h2>{produit.nom}</h2>
-            {/* <p>{produit.image}</p> */}
+            {/* <img src={produit.image} alt={produit.nom} className="image-produit" /> */}
             <p>Prix : {produit.prix} €</p>
             <p>Type : {produit.type}</p>
         </div>

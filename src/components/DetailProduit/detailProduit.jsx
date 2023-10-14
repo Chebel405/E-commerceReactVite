@@ -17,6 +17,7 @@ const DetailProduit = () => {
     return (
         <div className="container">
             <h2>{produit.nom}</h2>
+            <img src={`/${produit.image}`} alt={produit.nom} className="image-produit" />
             <p>Prix : {produit.prix} Euros</p>
             <p>Type : {produit.type}</p>
             <Link to="/" className="btn-retour">Retour</Link>

@@ -4,7 +4,7 @@ import { produits } from "../../Data/Produits";
 import styles from './../../assets/styles/listProduit.css';
 
 const ListProduit = () => {
-    const produitsParLigne = 3; // Nombre de produits par ligne
+    const produitsParLigne = 4; // Nombre de produits par ligne
     return (
         <div>
             <h1>Liste des Produits</h1>
@@ -12,6 +12,7 @@ const ListProduit = () => {
                 {produits.map((produit) => (
                     <div key={produit.id} className="produit">
                         <h2>{produit.nom}</h2>
+                        <img src={produit.image} alt={produit.nom} className="image-produit" />
                         <p>Prix : {produit.prix} Euros</p>
                         <p>Type : {produit.type}</p>
                         <Link to={`/detail/${produit.id}`}>Voir les détails</Link>

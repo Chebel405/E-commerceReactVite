@@ -15,4 +15,11 @@
     margin: 10px 0; /* Ajoute de la marge autour des paragraphes */
     font-size: 16px; /* Personnalisez la taille de la police pour les paragraphes */
   }
+
+    /* Dans votre fichier CSS */
+.image-produit {
+  width: 100px; /* Largeur souhaitée en pixels */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+}
+
   

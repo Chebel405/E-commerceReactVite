@@ -12,7 +12,6 @@ export const NavBar = () => {
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Auchan</a>
                 <FontAwesomeIcon icon={faShoppingCart} style={cartIconStyle} />
-
             </div>
         </nav>
     )
