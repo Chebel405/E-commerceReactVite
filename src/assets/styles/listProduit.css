@@ -9,9 +9,15 @@
     margin: 5px; /* Espacement entre les éléments */
     border: 1px solid #ccc; /* Bordure pour les éléments */
     padding: 10px;
+    display: block; /* Pour mettre chaque produit sur une ligne distincte */
+    margin-bottom: 20px; /* Espace entre chaque produit */
   }
   /* Dans votre fichier CSS */
 .image-produit {
   width: 100px; /* Largeur souhaitée en pixels */
   height: auto; /* Hauteur automatique pour conserver les proportions */
+}
+
+.produit-actions{
+
 }
