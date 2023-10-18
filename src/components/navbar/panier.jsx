@@ -2,19 +2,9 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 
-function Panier(props) {
-    const [panier, setPanier] = useState([]);
 
-    // Fonction pour ajouter un produit au panier
-    const ajouterAuPanier = (produit) => {
-        setPanier([...panier, produit]);
-    };
 
-    // Fonction pour supprimer un produit du panier
-    const supprimerDuPanier = (produitId) => {
-        const nouveauPanier = panier.filter((produit) => produit.id !== produitId);
-        setPanier(nouveauPanier);
-    };
+function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
 
     return (
         <div>
@@ -23,12 +13,16 @@ function Panier(props) {
                 {panier.map((produit) => (
                     <div key={produit.id}>
                         {produit.nom} - {produit.prix} Euros
-                        <button className="btn btn-dark" onClick={() => props.supprimerDuPanier(produit.id)}>Retirer du Panier</button>
-                        <button onClick={() => props.ajouterAuPanier(produit)}>Ajouter au panier</button>
-                    </div>
-                ))}
+                        <button onClick={() => supprimerDuPanier(produit.id)}>Retirer du Panier</button>
+                        <button onClick={() => ajouterAuPanier(produit)} >Ajouter au panier</button>
+                    </div>,
+                    console.log(panier.id)
+                )
+                )}
+
+
             </div>
-            <Link to='/listProduit'>Revenir à la liste des produits proposés</Link>
+            <Link to='/'>Retour</Link>
         </div>
     );
 }

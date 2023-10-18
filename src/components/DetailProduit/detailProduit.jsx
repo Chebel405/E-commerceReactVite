@@ -16,11 +16,14 @@ const DetailProduit = () => {
 
     return (
         <div className="container">
-            <h2>{produit.nom}</h2>
-            <img src={`/${produit.image}`} alt={produit.nom} className="image-produit" />
-            <p>Prix : {produit.prix} Euros</p>
-            <p>Type : {produit.type}</p>
-            <Link to="/" className="btn-retour">Retour</Link>
+            <div className="card">
+                <img src={`/${produit.image}`} alt={produit.nom} className="card-img-top image-produit-card" />
+                <div className="card-body" />
+                <h2>{produit.nom}</h2>
+                <p>Prix : {produit.prix} Euros</p>
+                <p>Type : {produit.type}</p>
+                <Link to="/" className="btn btn-primary">Retour</Link>
+            </div>
         </div>
     );
 };
