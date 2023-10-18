@@ -51,6 +51,7 @@ function App() {
         },
         body: JSON.stringify({
           content: value,
+          // Voir les méthodes (remplacer) ajouterAuPanier, supprimerDuPanier
           edit: false,
           done: false,
         }),
