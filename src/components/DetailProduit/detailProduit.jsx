@@ -27,8 +27,13 @@ const DetailProduit = (props) => {
                 <h2>{produit.nom}</h2>
                 <p>Prix : {produit.prix} Euros</p>
                 <p>Type : {produit.type}</p>
-                <button onClick={handleAjouterAuPanier}>Ajouter au panier</button>
-                <Link to="/" className="btn btn-primary">Retour</Link>
+                <div className="text-center">
+                    <button onClick={handleAjouterAuPanier} className="btn btn-dark">Ajouter au panier</button>
+                </div>
+                <div className="text-center">
+                    <Link to="/" className="btn btn-primary">Retour</Link>
+                </div>
+
             </div>
         </div>
     );

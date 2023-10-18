@@ -24,8 +24,9 @@ const ListProduit = () => {
                             <p>Type : {produit.type}</p>
                         </div>
                         <div className="produit-actions">
-                            <Link to={`/detail/${produit.id}`}>Voir les détails</Link>
-                            <Link to="/">Ajouter au panier</Link>
+                            {/* <Link to={`/detail/${produit.id}`}>Voir les détails</Link> */}
+                            <Link to={`/detail/${produit.id}`} className="btn btn-primary">Voir les détails</Link>
+                            {/* <Link to="/">Ajouter au panier</Link> */}
                         </div>
                     </div>
                 ))}

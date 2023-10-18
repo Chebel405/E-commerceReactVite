@@ -6,7 +6,7 @@ import App from '../../App';
 
 
 
-function Panier({ panier, supprimerDuPanier }) {
+function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
 
 
 
@@ -17,14 +17,9 @@ function Panier({ panier, supprimerDuPanier }) {
                 {panier.map((produit) => (
                     <div key={produit.id}>
                         {produit.nom} - {produit.prix} Euros
-                        <button onClick={() => supprimerDuPanier(produit.id)}>Supprimer</button>
-
+                        <button onClick={() => supprimerDuPanier(produit.id)} className="btn btn-primary">Supprimer</button>
                     </div>
-                    // console.log(panier.id)
-                )
-                )}
-
-
+                ))}
             </div>
             <Link to='/'>Retour</Link>
         </div>
