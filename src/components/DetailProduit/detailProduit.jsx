@@ -5,7 +5,7 @@ import styles from './../../assets/styles/detailProduit.css';
 import { Link } from 'react-router-dom';
 
 
-const DetailProduit = () => {
+const DetailProduit = (props) => {
     const { id } = useParams(); // Récuperer l'Id avec l'URL
 
     const produit = produits.find((produit) => produit.id === parseInt(id));
@@ -13,6 +13,11 @@ const DetailProduit = () => {
     if (!produit) {
         return <div>Produit non trouvé</div>;
     }
+    // Nouveau  : Méthode pour ajouter le Produit au panier
+    const handleAjouterAuPanier = () => {
+        props.ajouterAuPanier(produit);
+
+    };
 
     return (
         <div className="container">
@@ -22,6 +27,7 @@ const DetailProduit = () => {
                 <h2>{produit.nom}</h2>
                 <p>Prix : {produit.prix} Euros</p>
                 <p>Type : {produit.type}</p>
+                <button onClick={handleAjouterAuPanier}>Ajouter au panier</button>
                 <Link to="/" className="btn btn-primary">Retour</Link>
             </div>
         </div>

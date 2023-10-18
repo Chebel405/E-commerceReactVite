@@ -11,6 +11,8 @@ import { Switch } from 'react-router-dom';
 function App() {
 
   const [panier, setPanier] = useState([]);
+  const [value, setValue] = useState("");
+  const [erreur, setErreur] = useState(null);
 
   // Fonction pour ajouter un produit au panier
   const ajouterAuPanier = (produit) => {
@@ -39,6 +41,33 @@ function App() {
     fetchProduits();
 
   }, []);
+
+  async function creationProduit() {
+    try {
+      const response = await fetch("https://restapi.fr/api/produits", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: value,
+          edit: false,
+          done: false,
+        }),
+      });
+      if (response.ok) {
+        const produit = await response.json();
+        ajouterAuPanier(produit);
+        setValue('');
+      } else {
+        setErreur("Echec de la création du produit");
+      }
+    } catch (e) {
+      console.error('ERREUR', e);
+    }
+  }
+
+
   return (
     <Router>
       <div>
@@ -47,12 +76,16 @@ function App() {
           <Route path="/" exact>
             <ListProduit ajouterAuPanier={ajouterAuPanier} />
           </Route>
-          <Route path="/detail/:id" component={DetailProduit} />
+          {/* <Route path="/detail/:id" component={DetailProduit} /> */}
+          <Route path="/detail/:id">
+            <DetailProduit ajouterAuPanier={ajouterAuPanier} />
+          </Route>
           <Route path="/panier" component={() => <Panier panier={panier} ajouterAuPanier={ajouterAuPanier} supprimerDuPanier={supprimerDuPanier} />} />
         </Switch>
       </div>
     </Router>
   );
+
 }
 
 export default App;

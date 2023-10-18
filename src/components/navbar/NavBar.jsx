@@ -26,6 +26,12 @@ export const NavBar = () => {
         // Filtrer selon le choix de l'utilisateur 
     };
 
+    function handleChange(e) {
+        const inputValue = e.target.value;
+        setValue(inputValue);
+        setSearchTerm(inputValue);
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">

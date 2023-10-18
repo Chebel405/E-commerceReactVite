@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { produits } from "../../Data/Produits";
 import styles from './../../assets/styles/listProduit.css';
 import App from "../../App";
-//import Panier from "../navbar/panier";
+import { Formik, Form, Field } from "formik";
 
 
 const ListProduit = () => {

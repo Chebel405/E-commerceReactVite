@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { produits } from '../../Data/Produits';
+import App from '../../App';
 
 
 
 
-function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
+function Panier({ panier, supprimerDuPanier }) {
+
+
 
     return (
         <div>
@@ -13,10 +17,10 @@ function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
                 {panier.map((produit) => (
                     <div key={produit.id}>
                         {produit.nom} - {produit.prix} Euros
-                        <button onClick={() => supprimerDuPanier(produit.id)}>Retirer du Panier</button>
-                        <button onClick={() => ajouterAuPanier(produit)} >Ajouter au panier</button>
-                    </div>,
-                    console.log(panier.id)
+                        <button onClick={() => supprimerDuPanier(produit.id)}>Supprimer</button>
+
+                    </div>
+                    // console.log(panier.id)
                 )
                 )}
 
