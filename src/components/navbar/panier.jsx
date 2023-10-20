@@ -6,7 +6,7 @@ import App from '../../App';
 
 
 
-function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
+const Panier = ({ panier, ajouterAuPanier, supprimerDuPanier }) => {
 
 
 
@@ -14,9 +14,9 @@ function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
         <div>
             <h2>Mon Panier</h2>
             <div className='ligne-produit'>
-                {panier.map((produit) => (
+                {panier && panier.map((produit) => (
                     <div key={produit.id}>
-                        {produit.nom} - {produit.prix} Euros
+                        <img src={produit.image} alt={produit.nom} className="image-produit" /> - {produit.nom} - {produit.prix} Euros
                         <button onClick={() => supprimerDuPanier(produit.id)} className="btn btn-primary">Supprimer</button>
                     </div>
                 ))}
@@ -27,3 +27,4 @@ function Panier({ panier, ajouterAuPanier, supprimerDuPanier }) {
 }
 
 export default Panier;
+
