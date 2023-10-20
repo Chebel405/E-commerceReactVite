@@ -6,10 +6,9 @@ import { NavBar } from './components/navbar/NavBar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import axios from 'axios';
-import { produits } from './Data/Produits';
 
 
-// UseEffect here !!!
+
 
 function App() {
 
@@ -19,8 +18,37 @@ function App() {
 
   // Fonction pour ajouter un produit au panier
   const ajouterAuPanier = (produit) => {
-    setPanier([...panier, produit]);
+    const produitIndex = panier.findIndex((item) => item.id === produit.id);
+
+    if (produitIndex !== -1) {
+      // Le produit est déjà dans le panier, augmentez la quantité
+      const nouveauPanier = [...panier];
+      nouveauPanier[produitIndex].quantite += 1;
+      setPanier(nouveauPanier);
+    } else {
+      // Le produit n'est pas encore dans le panier, ajoutez-le
+      setPanier([...panier, { ...produit, quantite: 1 }]);
+    }
   };
+
+
+
+  // const ajouterAuPanier = (produit) => {
+  //   const produitExistant = panier.find((p) => p.id === produit.id);
+
+  //   if (produitExistant) {
+  //     const nouveauPanier = panier.map((p) => {
+  //       if (p.id === produit.id) {
+  //         return { ...p, quantite: p.quantite + 1 };
+  //       }
+  //       return p;
+  //     });
+  //     setPanier(nouveauPanier);
+  //   } else {
+  //     setPanier([...panier, { ...produit, quantite: 1 }]);
+  //   }
+
+  // };
 
   // Fonction pour supprimer un produit du panier
   const supprimerDuPanier = (produitId) => {
@@ -28,20 +56,6 @@ function App() {
     setPanier(nouveauPanier);
   };
 
-  // const fetchData = () => {
-  //   axios
-  //     .get("https://restapi.fr/api/produits")
-  //     .then((response) => {
-  //       console.log(response)
-  //       setPanier(response.panier)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // }
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
 
   const fetchData = async () => {
     try {
@@ -58,6 +72,8 @@ function App() {
     fetchData();
   }, []);
 
+
+
   return (
     <Router>
       <div>
@@ -70,7 +86,7 @@ function App() {
           <Route path="/detail/:id">
             <DetailProduit ajouterAuPanier={ajouterAuPanier} />
           </Route>
-          <Route path="/panier" component={() => <Panier panier={panier} ajouterAuPanier={ajouterAuPanier} supprimerDuPanier={supprimerDuPanier} />} />
+          <Route path="/panier" component={() => <Panier panier={panier} ajouterAuPanier={ajouterAuPanier} supprimerDuPanier={supprimerDuPanier} setPanier={setPanier} />} />
         </Switch>
       </div>
     </Router>
@@ -79,51 +95,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-//FETCH
-// useEffect(() => {
-//   async function fetchProduits() {
-//     try {
-//       const response = await fetch("https://restapi.fr/api/produits");
-//       if (response.ok) {
-//         const produits = await response.json();
-//         setPanier(Array.isArray(produits) ? produits :
-//           [produits]);
-//       }
-//     } catch (e) {
-//       console.error('ERREUR', e);
-//     }
-//   }
-//   fetchProduits();
-
-// }, []);
-
-// async function creationProduit() {
-//   try {
-//     const response = await fetch("https://restapi.fr/api/produits", {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         content: value,
-//         // Voir les méthodes (remplacer) ajouterAuPanier, supprimerDuPanier
-//         edit: false,
-//         done: false,
-//       }),
-//     });
-//     if (response.ok) {
-//       const produit = await response.json();
-//       ajouterAuPanier(produit);
-//       setValue('');
-//     } else {
-//       setErreur("Echec de la création du produit");
-//     }
-//   } catch (e) {
-//     console.error('ERREUR', e);
-//   }
-// }

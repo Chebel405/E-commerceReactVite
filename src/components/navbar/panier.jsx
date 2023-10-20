@@ -6,21 +6,27 @@ import PanierFormulaire from '../Formulaire/PanierFormulaire';
 import styles from './../../assets/styles/panierProduit.css';
 
 
+const Panier = ({ panier, ajouterAuPanier, supprimerDuPanier, setPanier }) => {
 
 
-
-const Panier = ({ panier, ajouterAuPanier, supprimerDuPanier }) => {
-
-    const [quantiteEnCours, setQuantiteEnCours] = useState(1);
-
-    const incrementQuantite = () => {
-        setQuantiteEnCours(quantiteEnCours + 1);
+    const incrementQuantite = (produit) => {
+        ajouterAuPanier(produit);
     };
-    const decrementQuantite = () => {
-        if (quantiteEnCours > 0) {
-            setQuantiteEnCours(quantiteEnCours - 1);
+    const decrementQuantite = (produit) => {
+        const produitExistant = panier.find((p) => p.id === produit.id);
+
+        if (produitExistant && produitExistant.quantite > 0) {
+            const nouveauPanier = panier.map((p) => {
+                if (p.id === produit.id) {
+                    return { ...p, quantite: p.quantite - 1 };
+                }
+                return p;
+            });
+            setPanier(nouveauPanier);
         };
     }
+
+
 
     return (
         <div>
@@ -41,9 +47,9 @@ const Panier = ({ panier, ajouterAuPanier, supprimerDuPanier }) => {
                             <td><img src={produit.image} alt={produit.nom} className="image-produit" /></td>
                             <td>{produit.nom}</td>
                             <td>
-                                <button onClick={decrementQuantite}>-</button>
-                                {quantiteEnCours}
-                                <button onClick={incrementQuantite}>+</button>
+                                <button onClick={() => decrementQuantite(produit)}>-</button>
+                                {produit.quantite}
+                                <button onClick={() => incrementQuantite(produit)}>+</button>
                             </td>
                             <td>{produit.prix} Euros</td>
                             <td>
@@ -56,21 +62,9 @@ const Panier = ({ panier, ajouterAuPanier, supprimerDuPanier }) => {
             <Link to='/'>Retour</Link>
         </div>
 
-        // <div>
-        //     <h2>Mon Panier</h2>
-        //     <div className='ligne-produit'>
-        //         {panier && panier.map((produit) => (
-        //             <div key={produit.id} className='produit'>
-        //                 <img src={produit.image} alt={produit.nom} className="image-produit" /> - {produit.nom} - {produit.prix} Euros
-        //                 <button onClick={() => supprimerDuPanier(produit.id)} className="btn btn-primary">Supprimer</button>
-        //             </div>
-        //         ))}
-        //         {/* <PanierFormulaire ajouterAuPanier={ajouterAuPanier} /> */}
-        //     </div>
-        //     <Link to='/'>Retour</Link>
-        // </div>
     );
 }
+
 
 export default Panier;
 
