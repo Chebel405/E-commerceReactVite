@@ -10,6 +10,8 @@ const ListProduit = () => {
     const produitsParLigne = 4; // Nombre de produits par ligne
 
 
+
+
     return (
         <div>
             <h2>Liste des Produits</h2>
@@ -19,7 +21,7 @@ const ListProduit = () => {
                         <div className="produit-info">
                             <h2>{produit.nom}</h2>
                             <img src={produit.image} alt={produit.nom} className="image-produit" />
-
+                            <p>Quantité : {produit.quantite}</p>
                             <p>Prix : {produit.prix} Euros</p>
                             <p>Type : {produit.type}</p>
                         </div>

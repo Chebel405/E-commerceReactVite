@@ -25,6 +25,7 @@ const DetailProduit = (props) => {
                 <img src={`/${produit.image}`} alt={produit.nom} className="card-img-top image-produit-card" />
                 <div className="card-body" />
                 <h2>{produit.nom}</h2>
+                <p>Quantite : {produit.quantite}</p>
                 <p>Prix : {produit.prix} Euros</p>
                 <p>Type : {produit.type}</p>
                 <div className="text-center">
